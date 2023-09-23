@@ -74,7 +74,9 @@ function scripts() {
 
 function styles() {
   return src([
-    'app/scss/style.scss'])
+    'node_modules/normalize.css',
+    // 'node_modules/slick-carousel/slick/slick.css',
+    'app/scss/**/*.scss'])
     .pipe(autoprefixer({ overrideBrowserslist: ['last 10 version'] }))
     .pipe(concat('style.min.css'))
     .pipe(scss({ outputStyle: 'compressed' }))
@@ -88,7 +90,7 @@ function watching() {
       baseDir: "app/"
     }
   });
-  watch(['app/scss/style.scss'], styles)
+  watch(['app/scss/**/*.scss'], styles)
   watch(['app/images/src'], images)
   watch(['app/js/main.js'], scripts)
   watch(['app/components/*', 'app/pages/*'], pages)
